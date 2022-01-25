@@ -2,7 +2,7 @@ import * as React from 'react'
 import { Builder } from '@builder.io/react'
 
 export const NavComponent = ({ image, nav }) => (
-  <div className="navBar flex gap-5 justify-between p-5">
+  <div className="navBar flex gap-5 justify-between py-5">
     <img src={image} alt="Logo" className="" />
 
     <div className="nav uppercase font-bold max-w-3xl flex gap-20 justify-between">
@@ -14,7 +14,7 @@ export const NavComponent = ({ image, nav }) => (
         ))}
     </div>
 
-    <div className="flex gap-5 justify-center align-center">
+    <div className="flex gap-8 justify-center align-center">
       <a href="">
         <img src="/account.svg" alt="Account" className="w-8 h-8" />
       </a>

@@ -6,6 +6,12 @@ module.exports = {
   ],
   theme: {
     extend: {
+      container: {
+        center: true,
+        padding: {
+          DEFAULT: '1rem',
+        },
+      },
       fontFamily: {
         sans: [ 'Trade', ...defaultTheme.fontFamily.sans ],
       },

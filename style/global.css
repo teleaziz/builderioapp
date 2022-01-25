@@ -17,5 +17,7 @@ body {
   box-sizing: border-box;
   font-family: Trade, 'Roboto Condensed', sans-serif;
   color: #131212;
-  background-color: #e5e5e5;
+  background-color: #f6f6f6;
+  letter-spacing: -0.3px;
+  text-rendering: geometricPrecision;
 }

@@ -6,8 +6,8 @@ import builderConfig from '@config/builder'
 import '@builder.io/widgets'
 import Layout from 'components/Partials/Layout'
 import Container from 'components/Partials/Container'
-import { supabase } from '../lib/supabase'
-import React, { useState, useEffect } from 'react'
+import Product from '@components/Product'
+import Social from '@components/Social'
 
 builder.init(builderConfig.apiKey)
 
@@ -53,16 +53,6 @@ export default function Page({
   if (router.isFallback) {
     return <h1>Loading...</h1>
   }
-  const [productData, setProductData] = useState([])
-  useEffect(() => {
-    fetchProducts()
-  }, [])
-
-  const fetchProducts = async () => {
-    let { data: products, error } = await supabase.from('products').select('*')
-    if (error) console.log('error', error)
-    else console.log(products)
-  }
 
   const isLive = !Builder.isEditing && !Builder.isPreviewing
   if (!page && isLive) {
@@ -80,6 +70,8 @@ export default function Page({
       <Layout>
         <Container>
           <BuilderComponent model="page" content={page} />
+          <Product />
+          <Social />
         </Container>
       </Layout>
     </>
