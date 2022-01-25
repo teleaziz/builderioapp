@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'Trade';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local(''),
+    url('../public/font/Trade Gothic LT Condensed.ttf') format('ttf');
+}
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700&display=swap');
+
+html,
+body {
+  box-sizing: border-box;
+  font-family: Trade, 'Roboto Condensed', sans-serif;
+  color: #131212;
+  background-color: #e5e5e5;
+}
