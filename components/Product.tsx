@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import { ProductType, SizeType, ColorType } from 'lib/types'
 import { useAuth } from 'lib/AuthContext'
 import ModalVideo from 'react-modal-video'
-import product from 'next-seo/lib/jsonld/product'
 
 const Product = () => {
   // GET PRODUCT DATA FROM CONTEXT
@@ -68,14 +67,17 @@ const Product = () => {
     setSelectedIndex({ size: '', color: '', sizeValue: '', colorValue: '' })
   }
 
-  const handleCart = () => {
+  const handleCart = (index: number) => {
     setCart({
       item: cart.item + 1,
-      product: {
-        ...productData[showSection.slice(5, 6)],
-        size: selectedIndex.sizeValue,
-        color: selectedIndex.colorValue,
-      },
+      product: [
+        ...cart.product,
+        {
+          ...productData[index],
+          size: selectedIndex.sizeValue,
+          color: selectedIndex.colorValue,
+        },
+      ],
     })
   }
 
@@ -231,7 +233,7 @@ const Product = () => {
               </div>
               <div
                 className="p text-xl uppercase font-bold cursor-pointer"
-                onClick={() => handleCart()}
+                onClick={() => handleCart(index)}
               >
                 ADD TO CART — {`$` + product.price}
               </div>

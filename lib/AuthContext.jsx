@@ -20,8 +20,13 @@ export function AuthProvider({ children }) {
   const [colorData, setColorData] = useState([])
   const [cart, setCart] = useState({
     item: 0,
-    product: {},
+    product: [],
   })
+
+  const total = cart?.product
+    .map((product) => product.price)
+    .reduce((a, b) => a + b, 0)
+
   useEffect(() => {
     fetchProducts()
     fetchColors()
@@ -40,6 +45,7 @@ export function AuthProvider({ children }) {
     setColorData,
     cart,
     setCart,
+    total,
   }
   const fetchProducts = async () => {
     let { data: products, error } = await supabase.from('products').select('*')
