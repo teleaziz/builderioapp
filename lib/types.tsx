@@ -4,9 +4,15 @@ export type ProductType = {
   price?: number
   size?: [number]
   category?: [number]
+  color?: [number]
   image?: string
+  video_link?: string
 }
 
 export type SizeType = {
-  size: number
+  size: string
+}
+
+export type ColorType = {
+  color: string
 }

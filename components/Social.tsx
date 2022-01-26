@@ -2,7 +2,7 @@ import React from 'react'
 
 const Social = () => {
   return (
-    <div className="social flex flex-col gap-5 items-end absolute container mx-auto left-auto right-auto bottom-1/4">
+    <div className="social flex flex-col gap-5 items-end absolute container mx-auto left-auto right-auto bottom-1/4 px-5">
       <a href="#">
         <img src="/insta.svg" alt="instagram" className="w-7 h-7" />
       </a>

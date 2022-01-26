@@ -20,6 +20,9 @@ export const NavComponent = ({ image, nav }) => (
       </a>
       <a href="">
         <img src="/cart.svg" alt="Cart" className="w-8 h-8" />
+        <span className="w-5 h-5 bg-red-500 text-white text-xs flex justify-center items-center font-bold uppercase rounded-full absolute -right-2 top-2">
+          0
+        </span>
       </a>
     </div>
   </div>

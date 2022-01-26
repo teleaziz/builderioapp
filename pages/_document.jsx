@@ -16,6 +16,7 @@ class MyDocument extends Document {
             as="font"
             crossOrigin=""
           />
+          <link rel="icon" type="image/svg" href="/logo.svg" />
         </Head>
         <body>
           <Main />

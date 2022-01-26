@@ -1,0 +1,53 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import 'node_modules/react-modal-video/scss/modal-video.scss';
+
+@font-face {
+  font-family: 'Trade';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local(''),
+    url('../public/font/Trade Gothic LT Condensed.ttf') format('ttf');
+}
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700&display=swap');
+
+html,
+body {
+  box-sizing: border-box;
+  font-family: Trade, 'Roboto Condensed', sans-serif;
+  color: #131212;
+  background-color: #f6f6f6;
+  letter-spacing: -0.3px;
+  text-rendering: geometricPrecision;
+}
+
+.product-image {
+  transition: all 0.1s linear;
+  -webkit-transition: all 0.1s linear;
+  -moz-transition: all 0.1s linear;
+  -ms-transition: all 0.1s linear;
+  -o-transition: all 0.1s linear;
+}
+
+.show-1 .product-image {
+  filter: hue-rotate(45deg);
+}
+.show-2 .product-image {
+  filter: hue-rotate(145deg);
+  -webkit-filter: hue-rotate(185deg);
+}
+
+.product-container * {
+  transition: all 0.5s linear;
+  -webkit-transition: all 0.5s linear;
+  -moz-transition: all 0.5s linear;
+  -ms-transition: all 0.5s linear;
+  -o-transition: all 0.5s linear;
+}
+
+.size-color {
+  max-width: 310px;
+}

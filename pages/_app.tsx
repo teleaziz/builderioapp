@@ -5,7 +5,8 @@ import { supabase } from '../lib/supabase'
 import { AuthProvider } from '../lib/AuthContext'
 import { builder } from '@builder.io/react'
 import builderConfig from '@config/builder'
-import '../style/global.css'
+import '../style/global.scss'
+
 builder.init(builderConfig.apiKey)
 
 export default function MyApp({ Component, pageProps }: AppProps) {
