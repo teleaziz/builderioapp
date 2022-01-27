@@ -50,4 +50,14 @@ body {
 
 .size-color {
   max-width: 310px;
+  @media screen and (max-width: 1024px) {
+    max-width: 280px;
+  }
+}
+
+.container {
+  @media screen and (min-width: 1400px) {
+    max-width: 1280px;
+    margin: auto;
+  }
 }

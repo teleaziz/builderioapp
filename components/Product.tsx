@@ -118,7 +118,7 @@ const Product = () => {
                 <p className="text-lg font-bold uppercase productData">
                   {product.title}
                 </p>
-                <p className="text-6xl font-bold uppercase productData">
+                <p className="text-5xl lg:text-6xl font-bold uppercase productData">
                   {product.title}
                 </p>
                 <p className="text-lg opacity-50 productData">
@@ -157,21 +157,21 @@ const Product = () => {
               <img
                 src={product.image}
                 alt="Air Edge 270"
-                className="absolute left-0 right-0 top-20 object-contain w-full max-w-5xl mx-auto product-image"
+                className="absolute left-0 right-0 top-52 lg:top-36 2xl:top-20 object-contain w-full max-w-3xl 2xl:max-w-5xl mx-auto product-image"
                 style={{}}
               />
 
               {/* SIZE AND COLOR CONTAINER */}
-              <div className="size-color flex flex-col gap-5 z-10 max-w-xs mr-0">
+              <div className="size-color flex flex-col gap-4 lg:gap-5 z-10 max-w-xs mr-0">
                 <p className="uppercase text-xl font-bold">SELECT SIZE(US)</p>
 
-                <div className="flex items-center justify-start gap-4 mb-5 max-w-xs flex-wrap">
+                <div className="flex items-center justify-start gap-2 lg:gap-4 mb-3 lg:mb-5 max-w-xs flex-wrap">
                   {sizeData &&
                     sizeData.map((size: SizeType, index: number) => (
                       <div
                         key={index}
                         onClick={() => handleSelected('size', index, size.size)}
-                        className={`border-2 delay-75  h-12 w-12 text-sm flex items-center justify-center cursor-pointer
+                        className={`border-2 delay-75 h-11 w-11 lg:h-12 lg:w-12 text-sm flex items-center justify-center cursor-pointer
                         ${
                           product.size?.includes(index)
                             ? 'bg-black text-white hover:bg-yellow-500 hover:text-black'
@@ -197,7 +197,7 @@ const Product = () => {
                     ))}
                 </div>
                 <p className="uppercase text-xl font-bold">SELECT COLOR</p>
-                <div className="flex items-center justify-start gap-4 mb-5 max-w-xs flex-wrap">
+                <div className="flex items-center justify-start gap-3 lg:gap-4 mb-2 lg:mb-5 max-w-xs flex-wrap">
                   {colorData &&
                     colorData.map((color: ColorType, index: number) => (
                       <div
@@ -205,7 +205,7 @@ const Product = () => {
                         onClick={() =>
                           handleSelected('color', index, color.color)
                         }
-                        className={`border-2 rounded-full delay-75 h-12 w-12 text-sm flex items-center justify-center cursor-pointer
+                        className={`border-2 rounded-full delay-75 h-10 w-10 lg:h-12 lg:w-12 text-sm flex items-center justify-center cursor-pointer
                         ${product.color?.includes(index) ? 'block' : 'hidden'}
                         ${
                           selectedIndex.color === `color-${index}`
