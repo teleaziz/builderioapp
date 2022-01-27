@@ -94,9 +94,9 @@ const Product = () => {
   console.log(cart, 'totalPrice', totalPrice)
 
   return (
-    <div className="flex flex-col gap-5 py-20 container relative px-0">
+    <div className="flex flex-col gap-5 py-10 sm:py-20 container relative px-0">
       <p
-        className="text-xl font-bold uppercase z-10 fixed mx-auto -left-auto right-auto"
+        className="text-xl font-bold uppercase z-10 fixed mx-auto hidden sm:block -left-auto right-auto"
         style={{ writingMode: 'vertical-lr', top: '70vh' }}
       >
         scroll down
@@ -113,12 +113,14 @@ const Product = () => {
                 : `hidden show-${index}`
             } `}
           >
-            <div className={`flex gap-4 relative justify-between items-start`}>
+            <div
+              className={`flex gap-4 relative justify-between items-start flex-col sm:flex-row`}
+            >
               <div className="flex flex-col gap-6 max-w-sm ml-0 z-10">
                 <p className="text-lg font-bold uppercase productData">
                   {product.title}
                 </p>
-                <p className="text-5xl lg:text-6xl font-bold uppercase productData">
+                <p className="text-3xl sm:text-5xl lg:text-6xl font-bold uppercase productData">
                   {product.title}
                 </p>
                 <p className="text-lg opacity-50 productData">
@@ -131,7 +133,7 @@ const Product = () => {
                     onClick={() => setOpen(true)}
                     src="/play-button.svg"
                     alt="play video"
-                    className="w-14 h-14 cursor-pointer"
+                    className="w-10 sm:w-14 h-10 sm:h-14 cursor-pointer"
                   />
                   {product.video_link && (
                     <ModalVideo
@@ -157,7 +159,7 @@ const Product = () => {
               <img
                 src={product.image}
                 alt="Air Edge 270"
-                className="absolute left-0 right-0 top-52 lg:top-36 2xl:top-20 object-contain w-full max-w-3xl 2xl:max-w-5xl mx-auto product-image"
+                className="absolute left-0 right-0 top-full sm:top-58 lg:top-60 2xl:top-40 object-contain w-full max-w-3xl 2xl:max-w-5xl mx-auto product-image"
                 style={{}}
               />
 
@@ -229,8 +231,8 @@ const Product = () => {
             </div>
 
             {/* Bottom Navigation and Cart button section */}
-            <div className="p-10 bg-white rounded-t-5 flex justify-between w-full items-center fixed container bottom-0">
-              <div className="arrows flex gap-8 ">
+            <div className="p-6 sm:p-10 bg-white rounded-t-5 flex justify-between w-full items-center fixed container bottom-0 flex-col sm:flex-row">
+              <div className="arrows flex gap-8 mb-5 sm:mb-0">
                 <div
                   className="prev flex flex-col cursor-pointer"
                   onClick={() => handlePreviousClick(index)}

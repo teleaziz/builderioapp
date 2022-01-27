@@ -30,6 +30,10 @@ body {
   -moz-transition: all 0.1s linear;
   -ms-transition: all 0.1s linear;
   -o-transition: all 0.1s linear;
+
+  @media (min-with: 480px) and (max-width: 620px) {
+    top: 60vh;
+  }
 }
 
 .show-1 .product-image {
@@ -57,7 +61,11 @@ body {
 
 .container {
   @media screen and (min-width: 1400px) {
-    max-width: 1280px;
+    max-width: 1360px;
     margin: auto;
   }
+}
+
+#__next > .navBar {
+  display: none;
 }

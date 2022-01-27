@@ -4,12 +4,15 @@ import { useAuth } from 'lib/AuthContext'
 
 export const NavComponent = ({ image, nav }) => {
   const { cart } = useAuth()
+  const menuRef = React.useRef(null)
+  const [navMobile, setNavMobile] = React.useState(false)
+
   return (
     <div className="navBar flex gap-5 justify-between py-5">
       {/* LOGO */}
       <img src={image} alt="Logo" className="LOGO" />
       {/* NAV MENU */}
-      <div className="nav uppercase font-bold max-w-3xl flex gap-20 justify-between">
+      <div className="nav uppercase font-bold max-w-3xl hidden lg:flex gap-20 justify-between">
         {nav &&
           nav.map((v, i) => (
             <a key={i} href={v.url} className="navLink text-2xl cursor-pointer">
@@ -22,12 +25,35 @@ export const NavComponent = ({ image, nav }) => {
         <a href="">
           <img src="/account.svg" alt="Account" className="w-8 h-8" />
         </a>
-        <a href="">
+        <a href="" className="relative">
           <img src="/cart.svg" alt="Cart" className="w-8 h-8" />
-          <span className="w-5 h-5 bg-red-500 text-white text-xs flex justify-center items-center font-bold uppercase rounded-full absolute -right-2 top-2">
+          <span className="w-5 h-5 bg-red-500 text-white text-xs flex justify-center items-center font-bold uppercase rounded-full absolute -right-2 -top-2">
             {cart.item}
           </span>
         </a>
+        <img
+          src="/burger.svg"
+          className="block lg:hidden cursor-pointer"
+          onClick={() => setNavMobile(!navMobile)}
+        />
+        {navMobile && (
+          <div
+            className="bg-white shadow-md flex flex-col p-5 absolute z-50 top-14"
+            ref={menuRef}
+          >
+            {nav.map((v, i) => {
+              return (
+                <a
+                  key={i}
+                  href={v.url}
+                  className="navLink text-xl cursor-pointer"
+                >
+                  {v.menuName}
+                </a>
+              )
+            })}
+          </div>
+        )}
       </div>
     </div>
   )
