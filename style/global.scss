@@ -32,7 +32,7 @@ body {
   -o-transition: all 0.1s linear;
 
   @media (min-with: 480px) and (max-width: 620px) {
-    top: 60vh;
+    top: 60% !important;
   }
 }
 

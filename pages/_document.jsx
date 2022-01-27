@@ -10,12 +10,6 @@ class MyDocument extends Document {
     return (
       <Html>
         <Head>
-          <link
-            rel="preload"
-            href="/font/Trade Gothic LT Condensed.ttf"
-            as="font"
-            crossOrigin=""
-          />
           <link rel="icon" type="image/svg" href="/logo.svg" />
         </Head>
         <body>

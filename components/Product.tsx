@@ -114,9 +114,9 @@ const Product = () => {
             } `}
           >
             <div
-              className={`flex gap-4 relative justify-between items-start flex-col sm:flex-row`}
+              className={`flex gap-8 sm:gap-4 relative justify-between items-start flex-col sm:flex-row`}
             >
-              <div className="flex flex-col gap-6 max-w-sm ml-0 z-10">
+              <div className="flex flex-col gap-4 sm:gap-6 max-w-sm ml-0 z-10">
                 <p className="text-lg font-bold uppercase productData">
                   {product.title}
                 </p>
