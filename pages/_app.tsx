@@ -6,6 +6,7 @@ import { AuthProvider } from '../lib/AuthContext'
 import { builder } from '@builder.io/react'
 import builderConfig from '@config/builder'
 import '../style/global.scss'
+// import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css'
 
 builder.init(builderConfig.apiKey)
 

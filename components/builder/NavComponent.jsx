@@ -3,11 +3,12 @@ import { Builder } from '@builder.io/react'
 import { useAuth } from 'lib/AuthContext'
 
 export const NavComponent = ({ image, nav }) => {
-  const { cart, setCart } = useAuth()
+  const { cart } = useAuth()
   return (
     <div className="navBar flex gap-5 justify-between py-5">
-      <img src={image} alt="Logo" className="" />
-
+      {/* LOGO */}
+      <img src={image} alt="Logo" className="LOGO" />
+      {/* NAV MENU */}
       <div className="nav uppercase font-bold max-w-3xl flex gap-20 justify-between">
         {nav &&
           nav.map((v, i) => (
@@ -16,7 +17,7 @@ export const NavComponent = ({ image, nav }) => {
             </a>
           ))}
       </div>
-
+      {/* RIGHT SECTION, ACCOUNT & CART */}
       <div className="flex gap-8 justify-center align-center">
         <a href="">
           <img src="/account.svg" alt="Account" className="w-8 h-8" />

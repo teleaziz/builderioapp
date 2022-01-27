@@ -23,7 +23,8 @@ export function AuthProvider({ children }) {
     product: [],
   })
 
-  const total = cart?.product
+  // Calculate total cart price
+  const totalPrice = cart?.product
     .map((product) => product.price)
     .reduce((a, b) => a + b, 0)
 
@@ -34,6 +35,7 @@ export function AuthProvider({ children }) {
     fetchCategories()
   }, [])
 
+  // Values and functions to be passed to context
   const value = {
     productData,
     setProductData,
@@ -45,8 +47,10 @@ export function AuthProvider({ children }) {
     setColorData,
     cart,
     setCart,
-    total,
+    totalPrice,
   }
+
+  // Fetch product, size, category and color from Supabase
   const fetchProducts = async () => {
     let { data: products, error } = await supabase.from('products').select('*')
     if (error) console.log('error', error)

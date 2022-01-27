@@ -1,7 +1,8 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { ProductType, SizeType, ColorType } from 'lib/types'
 import { useAuth } from 'lib/AuthContext'
 import ModalVideo from 'react-modal-video'
+import { TailSpin } from 'react-loader-spinner'
 
 const Product = () => {
   // GET PRODUCT DATA FROM CONTEXT
@@ -12,6 +13,7 @@ const Product = () => {
     colorData,
     cart,
     setCart,
+    totalPrice,
   } = useAuth()
   // SET WHICH SECTION TO SHOW ON CLICKING PREV/NEXT BUTTONS
   const [showSection, setShowSection] = useState('show-0')
@@ -23,6 +25,7 @@ const Product = () => {
     sizeValue: '',
     colorValue: '',
   })
+  const [processing, setProcessing] = useState(false)
 
   const length = productData.length
   console.log(selectedIndex)
@@ -63,11 +66,14 @@ const Product = () => {
     }
   }
 
+  //Clear size and color selection after certain action
   const clearSelection = () => {
     setSelectedIndex({ size: '', color: '', sizeValue: '', colorValue: '' })
   }
 
+  // Add to cart
   const handleCart = (index: number) => {
+    setProcessing(true)
     setCart({
       item: cart.item + 1,
       product: [
@@ -79,9 +85,13 @@ const Product = () => {
         },
       ],
     })
+    const processTime = setTimeout(() => {
+      setProcessing(false)
+      clearSelection()
+    }, 800)
   }
 
-  console.log(cart)
+  console.log(cart, 'totalPrice', totalPrice)
 
   return (
     <div className="flex flex-col gap-5 py-20 container relative px-0">
@@ -91,6 +101,8 @@ const Product = () => {
       >
         scroll down
       </p>
+
+      {/* PRODUCT MAP Starts here */}
       {productData &&
         productData.map((product: ProductType, index: number) => (
           <div
@@ -112,6 +124,8 @@ const Product = () => {
                 <p className="text-lg opacity-50 productData">
                   {product.description}
                 </p>
+
+                {/* PRODUCT VIDEO */}
                 <div className="play-section flex gap-4 items-center">
                   <img
                     onClick={() => setOpen(true)}
@@ -139,12 +153,15 @@ const Product = () => {
                   </p>
                 </div>
               </div>
+              {/* PRODUCT IMAGE */}
               <img
                 src={product.image}
                 alt="Air Edge 270"
                 className="absolute left-0 right-0 top-20 object-contain w-full max-w-5xl mx-auto product-image"
                 style={{}}
               />
+
+              {/* SIZE AND COLOR CONTAINER */}
               <div className="size-color flex flex-col gap-5 z-10 max-w-xs mr-0">
                 <p className="uppercase text-xl font-bold">SELECT SIZE(US)</p>
 
@@ -210,6 +227,8 @@ const Product = () => {
                 </div>
               </div>
             </div>
+
+            {/* Bottom Navigation and Cart button section */}
             <div className="p-10 bg-white rounded-t-5 flex justify-between w-full items-center fixed container bottom-0">
               <div className="arrows flex gap-8 ">
                 <div
@@ -231,15 +250,26 @@ const Product = () => {
                   />
                 </div>
               </div>
+
               <div
                 className="p text-xl uppercase font-bold cursor-pointer"
                 onClick={() => handleCart(index)}
               >
-                ADD TO CART — {`$` + product.price}
+                {processing ? (
+                  <TailSpin color="#ffbb01" height={20} width={20} />
+                ) : (
+                  ` ADD TO CART — $` + product.price
+                )}
               </div>
+              {processing && (
+                <span className="p-5 bg-lime-500 max-w-max max-h-max mr-5 top-8 right-5 rounded-md  uppercase text-base font-bold absolute">
+                  Added to cart ✔
+                </span>
+              )}
             </div>
           </div>
         ))}
+      {/* PRODUCT MAP Ends here */}
     </div>
   )
 }

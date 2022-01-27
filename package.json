@@ -55,6 +55,7 @@
     "next-seo": "^4.11.0",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
+    "react-loader-spinner": "^5.1.0",
     "react-merge-refs": "^1.1.0",
     "react-modal-video": "^1.2.8",
     "sass": "^1.49.0"
