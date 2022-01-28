@@ -73,7 +73,12 @@ const Product = () => {
 
   // Add to cart
   const handleCart = (index: number) => {
+    if (selectedIndex.sizeValue == '' || selectedIndex.colorValue == '') {
+      alert('Please select size and color')
+      return
+    }
     setProcessing(true)
+
     setCart({
       item: cart.item + 1,
       product: [
@@ -138,9 +143,9 @@ const Product = () => {
                   {product.video_link && (
                     <ModalVideo
                       channel="youtube"
-                      autoplay
+                      autoplay={false}
                       wmode
-                      mute
+                      mute={true}
                       fs
                       isOpen={isOpen}
                       videoId={product.video_link}
@@ -164,7 +169,11 @@ const Product = () => {
               />
 
               {/* SIZE AND COLOR CONTAINER */}
-              <div className="size-color flex flex-col gap-4 lg:gap-5 z-10 max-w-xs mr-0">
+              <div
+                className={`size-color flex flex-col gap-4 lg:gap-5 max-w-xs mr-0 ${
+                  isOpen ? 'z-0' : 'z-10'
+                }`}
+              >
                 <p className="uppercase text-xl font-bold">SELECT SIZE(US)</p>
 
                 <div className="flex items-center justify-start gap-2 lg:gap-4 mb-3 lg:mb-5 max-w-xs flex-wrap">
@@ -177,12 +186,12 @@ const Product = () => {
                         ${
                           product.size?.includes(index)
                             ? 'bg-black text-white hover:bg-yellow-500 hover:text-black'
-                            : ''
+                            : 'cursor-not-allowed pointer-events-none'
                         }
                         ${
                           selectedIndex.size === `size-${index}`
                             ? 'bg-yellow-500 text-black font-bold border border-gray-500'
-                            : 'cursor-not-allowed'
+                            : ''
                         }`}
                         style={{ transition: 'all 0.1s linear' }}
                       >
@@ -234,14 +243,14 @@ const Product = () => {
             <div className="p-6 sm:p-10 bg-white rounded-t-5 flex justify-between w-full items-center fixed container bottom-0 flex-col sm:flex-row">
               <div className="arrows flex gap-8 mb-5 sm:mb-0">
                 <div
-                  className="prev flex flex-col cursor-pointer"
+                  className="prev flex flex-col cursor-pointer hover:underline"
                   onClick={() => handlePreviousClick(index)}
                 >
                   <p className="uppercase text-base font-bold">prev</p>
                   <img src="/arrow.svg" alt="arrow left" className="w-10 h-5" />
                 </div>
                 <div
-                  className="next flex flex-col font-bold cursor-pointer"
+                  className="next flex flex-col font-bold cursor-pointer hover:underline"
                   onClick={() => handleNextClick(index)}
                 >
                   <p className="uppercase text-base">next</p>
@@ -254,8 +263,9 @@ const Product = () => {
               </div>
 
               <div
-                className="p text-xl uppercase font-bold cursor-pointer"
+                className="p text-xl uppercase font-bold border border-white py-2 hover:border px-2 hover:border-gray-900 cursor-pointer"
                 onClick={() => handleCart(index)}
+                style={{ transition: 'all 0.1s linear' }}
               >
                 {processing ? (
                   <TailSpin color="#ffbb01" height={20} width={20} />

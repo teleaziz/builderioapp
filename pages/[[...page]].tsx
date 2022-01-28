@@ -42,7 +42,7 @@ export async function getStaticPaths() {
 
   return {
     paths: pages.map((page) => `${page.data?.url}`),
-    fallback: true,
+    fallback: false,
   }
 }
 
@@ -70,7 +70,8 @@ export default function Page({
       <Layout>
         <Container>
           <BuilderComponent model="page" content={page} />
-          <Product />
+          {page.data.url == '/' && <Product />}
+          {console.log('page', page)}
           <Social />
         </Container>
       </Layout>

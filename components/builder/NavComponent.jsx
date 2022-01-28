@@ -25,12 +25,12 @@ export const NavComponent = ({ image, nav }) => {
         <a href="">
           <img src="/account.svg" alt="Account" className="w-8 h-8" />
         </a>
-        <a href="" className="relative">
+        <span className="relative">
           <img src="/cart.svg" alt="Cart" className="w-8 h-8" />
           <span className="w-5 h-5 bg-red-500 text-white text-xs flex justify-center items-center font-bold uppercase rounded-full absolute -right-2 -top-2">
             {cart.item}
           </span>
-        </a>
+        </span>
         <img
           src="/burger.svg"
           className="block lg:hidden cursor-pointer"
