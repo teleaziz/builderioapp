@@ -22,6 +22,9 @@ body {
   background-color: #f6f6f6;
   letter-spacing: -0.3px;
   text-rendering: geometricPrecision;
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
 }
 
 .product-image {

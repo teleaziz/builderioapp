@@ -1,8 +1,14 @@
 import React, { useEffect, useState } from 'react'
+import { Suspense } from 'react'
 import { ProductType, SizeType, ColorType } from 'lib/types'
 import { useAuth } from 'lib/AuthContext'
 import ModalVideo from 'react-modal-video'
 import { TailSpin } from 'react-loader-spinner'
+import { Canvas } from '@react-three/fiber'
+import { OrbitControls } from '@react-three/drei'
+import Nike from './Shoes3d/Nike'
+import Nike2 from './Shoes3d/Nike2'
+import Nike_air_jordan from './Shoes3d/Nike_air_jordan'
 
 const Product = () => {
   // GET PRODUCT DATA FROM CONTEXT
@@ -161,12 +167,25 @@ const Product = () => {
                 </div>
               </div>
               {/* PRODUCT IMAGE */}
-              <img
+              <Canvas
+                className="canvas absolute"
+                style={{ height: '80vh', position: 'absolute' }}
+              >
+                <OrbitControls enableZoom={false} />
+                <ambientLight intensity={0.5} />
+                <directionalLight position={[-2, 5, 2]} />
+                <Suspense fallback={null}>
+                  {index == 0 && <Nike />}
+                  {index == 1 && <Nike2 />}
+                  {index == 2 && <Nike_air_jordan />}
+                </Suspense>
+              </Canvas>
+              {/* <img
                 src={product.image}
                 alt="Air Edge 270"
                 className="absolute left-0 right-0 top-full sm:top-58 lg:top-60 2xl:top-40 object-contain w-full max-w-3xl 2xl:max-w-5xl mx-auto product-image"
                 style={{}}
-              />
+              /> */}
 
               {/* SIZE AND COLOR CONTAINER */}
               <div
