@@ -15,10 +15,9 @@ export default function Model ( { ...props } )
   const { nodes, materials } = useGLTF( '/nike2.gltf' );
   return (
     <group ref={ group } { ...props } dispose={ null }>
-      <group scale={ 2.5 }>
+      <group scale={ 2.8 }>
         <group rotation={ [ -Math.PI / 2, 0, 0 ] }>
-          <group rotation={ [ Math.PI / 2, 0, 0 ] }>
-
+          <group rotation={ [ Math.PI / 2, -5, 0 ] }>
             <mesh geometry={ nodes.defaultMaterial.geometry } material={ materials.NikeShoe } />
           </group>
         </group>

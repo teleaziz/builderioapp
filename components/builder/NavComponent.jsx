@@ -1,6 +1,7 @@
 import * as React from 'react'
 import { Builder } from '@builder.io/react'
 import { useAuth } from 'lib/AuthContext'
+import Link from 'next/link'
 
 export const NavComponent = ({ image, nav }) => {
   const { cart } = useAuth()
@@ -10,14 +11,18 @@ export const NavComponent = ({ image, nav }) => {
   return (
     <div className="navBar flex gap-5 justify-between py-5">
       {/* LOGO */}
-      <img src={image} alt="Logo" className="LOGO" />
+      <Link href="/">
+        <a>
+          <img src={image} alt="Logo" className="LOGO" />
+        </a>
+      </Link>
       {/* NAV MENU */}
       <div className="nav uppercase font-bold max-w-3xl hidden lg:flex gap-20 justify-between">
         {nav &&
           nav.map((v, i) => (
-            <a key={i} href={v.url} className="navLink text-2xl cursor-pointer">
-              {v.menuName}
-            </a>
+            <Link href={v.url ? v.url : ''} key={i}>
+              <a className="navLink text-2xl cursor-pointer">{v.menuName}</a>
+            </Link>
           ))}
       </div>
       {/* RIGHT SECTION, ACCOUNT & CART */}

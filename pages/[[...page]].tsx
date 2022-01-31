@@ -8,6 +8,9 @@ import Layout from 'components/Partials/Layout'
 import Container from 'components/Partials/Container'
 import Product from '@components/Product'
 import Social from '@components/Social'
+import '../components/builder/BannerComponent'
+import '../components/builder/NavComponent'
+import '../components/builder/TwoColsDiv'
 
 builder.init(builderConfig.apiKey)
 
@@ -69,9 +72,8 @@ export default function Page({
     <>
       <Layout>
         <Container>
-          <BuilderComponent model="page" content={page} />
+          <BuilderComponent model="Page" content={page} />
           {page.data.url == '/' && <Product />}
-          {console.log('page', page)}
           <Social />
         </Container>
       </Layout>

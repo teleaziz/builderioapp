@@ -34,7 +34,6 @@ const Product = () => {
   const [processing, setProcessing] = useState(false)
 
   const length = productData.length
-  console.log(selectedIndex)
 
   // HANDLE PREV/NEXT FUCNTION
   const handleNextClick = (index: number) => {
@@ -173,7 +172,7 @@ const Product = () => {
               >
                 <OrbitControls enableZoom={false} />
                 <ambientLight intensity={0.5} />
-                <directionalLight position={[-2, 5, 2]} />
+                <directionalLight position={[-2, 12, 3]} />
                 <Suspense fallback={null}>
                   {index == 0 && <Nike />}
                   {index == 1 && <Nike2 />}
@@ -249,7 +248,9 @@ const Product = () => {
                       >
                         <span
                           className={
-                            product.color?.includes(index) ? '' : 'opacity-20'
+                            product.color?.includes(index)
+                              ? 'shadow-md'
+                              : 'opacity-20'
                           }
                         ></span>
                       </div>
