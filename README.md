@@ -23,7 +23,7 @@ This example provides you with a ready-made application that you can copy locall
 1. Change into the example application by using the `cd` command:
 
    ```shell
-   cd builderioapp/builder-fe
+   cd builderioapp
    ```
 
 1. Open this directory in your favorite code editor.
