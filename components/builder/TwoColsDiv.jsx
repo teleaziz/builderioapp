@@ -13,8 +13,6 @@ export const TwoColsDiv = ({ video_id, video_url, product_id }) => {
       })[0]) ||
     []
 
-  console.log(product)
-
   return (
     <div className="two-cols bg-white flex flex-wrap flex-col lg:flex-row gap-5 justify-start items-center border rounded-md divide-x-2 shadow-md">
       {video_id && !video_url && (

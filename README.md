@@ -17,7 +17,7 @@ This example provides you with a ready-made application that you can copy locall
 1. At the command line, run the following command to create a local copy of the Builder.io repo:
 
    ```shell
-   git clone https://innersource.accenture.com/scm/ai-beta/builderioapp.git
+   git clone https://github.com/mirajaccenture/builderioapp.git
    ```
 
 1. Change into the example application by using the `cd` command:
