@@ -175,8 +175,8 @@ const Product = () => {
                 <ambientLight intensity={0.5} />
                 <directionalLight position={[-2, 12, 3]} />
                 <Suspense fallback={null}>
-                  {index == 0 && <Nike />}
-                  {index == 1 && <Nike2 />}
+                  {/* {index == 0 && <Nike />}
+                  {index == 1 && <Nike2 />} */}
                   {index == 2 && <Nike_air_jordan />}
                 </Suspense>
               </Canvas>
