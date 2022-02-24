@@ -73,6 +73,7 @@ export default function Page({
       <Layout>
         <Container>
           <BuilderComponent model="Page" content={page} />
+          {page.data?.url == '/' && <Product />}
           <Social />
         </Container>
       </Layout>
