@@ -11,6 +11,8 @@ import Social from '@components/Social'
 import '../components/builder/BannerComponent'
 import '../components/builder/NavComponent'
 import '../components/builder/TwoColsDiv'
+import React, { useEffect, useState } from 'react';
+import Head from 'next/head';
 
 builder.init(builderConfig.apiKey)
 
@@ -38,16 +40,25 @@ export async function getStaticProps({
 }
 
 export async function getStaticPaths() {
-  const pages = await builder.getAll('page', {
-    options: { noTargeting: true },
-    omit: 'data.blocks',
-  })
-
   return {
-    paths: pages.map((page) => `${page.data?.url}`),
-    fallback: false,
+    paths: [],
+    fallback: true,
   }
 }
+
+
+const NoSSR: React.FC<{ skeleton?: React.ReactNode }> = ({ children, skeleton }) => {
+  const [render, setRender] = useState(false);
+  useEffect(() => setRender(true), []);
+  if (render) {
+    return <>{children}</>;
+  }
+  if (skeleton) {
+    return <>{skeleton}</>;
+  }
+  return null;
+};
+
 
 export default function Page({
   page,
@@ -62,7 +73,12 @@ export default function Page({
     return (
       <>
         <Layout>
-          <DefaultErrorPage statusCode={404} />
+          <Head>
+            <meta name="robots" content="noindex" />
+          </Head>
+          <NoSSR>
+            <DefaultErrorPage statusCode={404} />
+          </NoSSR>
         </Layout>
       </>
     )
@@ -72,8 +88,9 @@ export default function Page({
     <>
       <Layout>
         <Container>
-          <BuilderComponent model="Page" content={page} />
-          {page.data?.url == '/' && <Product />}
+          {/* kebab case of the name */}
+          <BuilderComponent model="page" content={page} />
+          {page?.data?.url == '/' && <Product />}
           <Social />
         </Container>
       </Layout>

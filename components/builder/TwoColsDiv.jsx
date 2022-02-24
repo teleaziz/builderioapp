@@ -3,9 +3,12 @@ import { Builder } from '@builder.io/react'
 import { useAuth } from 'lib/AuthContext'
 import ReactPlayer from 'react-player'
 
-export const TwoColsDiv = ({ video_id, video_url, product_id }) => {
+export const TwoColsDiv = ({ video_id, video_url, product_id, commerceToolsProduct }) => {
   const { productData, colorData } = useAuth()
 
+  console.log(' got props as ', commerceToolsProduct);
+  // now I have handle here gum-beautybag-BC4052-gold
+  // useEffect to fetch the product
   const product =
     (productData &&
       productData.filter((product) => {
@@ -78,6 +81,7 @@ Builder.registerComponent(TwoColsDiv, {
   helperText:
     'Add video id from youtube or video URL and it will be embedded. Also add product ID from Supabase to get product details ',
   inputs: [
+    { name: 'commerceToolsProduct', friendlyName: "Product Handle", type: 'CommercetoolsProductHandle' },
     { name: 'video_id', type: 'string' },
     {
       name: 'video_url',
