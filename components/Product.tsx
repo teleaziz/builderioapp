@@ -21,6 +21,7 @@ const Product = () => {
     setCart,
     totalPrice,
   } = useAuth()
+
   // SET WHICH SECTION TO SHOW ON CLICKING PREV/NEXT BUTTONS
   const [showSection, setShowSection] = useState('show-0')
   const [isOpen, setOpen] = useState(false)
